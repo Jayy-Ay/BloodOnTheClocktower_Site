@@ -1,0 +1,233 @@
+.character-card {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm);
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid var(--border-subtle);
+  transition: var(--transition-normal);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+.character-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border-subtle);
+  transition: var(--transition-normal);
+}
+
+.character-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-dim);
+}
+
+.character-card.team-townsfolk::before { background: var(--team-townsfolk); opacity: 0.5; }
+.character-card.team-outsider::before { background: var(--team-outsider); opacity: 0.5; }
+.character-card.team-minion::before { background: var(--team-minion); opacity: 0.5; }
+.character-card.team-demon::before { background: var(--team-demon); opacity: 0.5; }
+.character-card.team-traveler::before { background: var(--team-traveler); opacity: 0.5; }
+
+.character-card.team-townsfolk:hover { border-color: rgba(74, 158, 255, 0.3); box-shadow: 0 4px 16px rgba(74, 158, 255, 0.1); }
+.character-card.team-outsider:hover { border-color: rgba(23, 165, 137, 0.3); box-shadow: 0 4px 16px rgba(23, 165, 137, 0.1); }
+.character-card.team-minion:hover { border-color: rgba(230, 126, 34, 0.3); box-shadow: 0 4px 16px rgba(230, 126, 34, 0.1); }
+.character-card.team-demon:hover { border-color: rgba(192, 57, 43, 0.3); box-shadow: 0 4px 16px rgba(192, 57, 43, 0.1); }
+.character-card.team-traveler:hover { border-color: rgba(155, 89, 182, 0.3); box-shadow: 0 4px 16px rgba(155, 89, 182, 0.1); }
+
+.character-card.team-townsfolk:hover::before,
+.character-card.team-outsider:hover::before,
+.character-card.team-minion:hover::before,
+.character-card.team-demon:hover::before,
+.character-card.team-traveler:hover::before {
+  opacity: 1;
+}
+
+.character-card.selected {
+  border-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.08);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.1);
+}
+
+.character-card.selected::before {
+  background: var(--accent-gold) !important;
+  opacity: 1 !important;
+}
+
+.character-card.selected.team-townsfolk { border-color: var(--team-townsfolk); background: rgba(74, 158, 255, 0.1); box-shadow: 0 0 16px rgba(74, 158, 255, 0.1); }
+.character-card.selected.team-outsider { border-color: var(--team-outsider); background: rgba(23, 165, 137, 0.1); box-shadow: 0 0 16px rgba(23, 165, 137, 0.1); }
+.character-card.selected.team-minion { border-color: var(--team-minion); background: rgba(230, 126, 34, 0.1); box-shadow: 0 0 16px rgba(230, 126, 34, 0.1); }
+.character-card.selected.team-demon { border-color: var(--team-demon); background: rgba(192, 57, 43, 0.1); box-shadow: 0 0 16px rgba(192, 57, 43, 0.1); }
+
+.character-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: rgba(12, 12, 26, 0.6);
+  border: 1px solid var(--border-subtle);
+}
+
+.character-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+}
+
+.character-team-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+}
+
+.character-team-badge.team-townsfolk { background: var(--team-townsfolk); }
+.character-team-badge.team-outsider { background: var(--team-outsider); }
+.character-team-badge.team-minion { background: var(--team-minion); }
+.character-team-badge.team-demon { background: var(--team-demon); }
+.character-team-badge.team-traveler { background: var(--team-traveler); }
+
+.character-emoji {
+  font-size: 2rem;
+}
+
+.character-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.character-name {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.setup-indicator {
+  font-size: 0.75rem;
+}
+
+/* Size variations */
+.character-card.size-small {
+  padding: var(--spacing-xs);
+}
+
+.character-card.size-small .character-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.character-card.size-small .character-emoji {
+  font-size: 1.5rem;
+}
+
+.character-card.size-small .character-name {
+  font-size: 0.7rem;
+}
+
+.character-card.size-large {
+  padding: var(--spacing-md);
+}
+
+.character-card.size-large .character-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.character-card.size-large .character-emoji {
+  font-size: 2.5rem;
+}
+
+.character-card.size-large .character-name {
+  font-size: 1rem;
+}
+
+/* Tooltip */
+.character-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--radius-lg);
+  padding: 0;
+  width: 280px;
+  z-index: 1000;
+  box-shadow: var(--shadow-lg);
+  text-align: left;
+  margin-bottom: var(--spacing-sm);
+  pointer-events: none;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  animation: tooltipIn 0.2s ease;
+}
+
+@keyframes tooltipIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.character-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: var(--bg-tertiary);
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(212, 175, 55, 0.04);
+}
+
+.tooltip-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--accent-gold);
+}
+
+.tooltip-ability {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.tooltip-reminders {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.reminders-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.reminder-tag {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  background: rgba(22, 22, 48, 0.8);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}

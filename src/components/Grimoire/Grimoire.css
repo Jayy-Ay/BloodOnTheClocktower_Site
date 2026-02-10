@@ -1,0 +1,340 @@
+.grimoire {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.no-script-message {
+  text-align: center;
+  padding: var(--spacing-xl);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+}
+
+.no-script-message p {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-secondary);
+}
+
+.grimoire-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+/* Circle Container */
+.grimoire-circle-container {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  aspect-ratio: 1;
+  min-height: 500px;
+  border: 1px solid var(--border-dim);
+  backdrop-filter: blur(8px);
+}
+
+.grimoire-circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: 
+    radial-gradient(circle at center, rgba(22, 22, 48, 0.9) 0%, var(--bg-tertiary) 60%, rgba(8, 8, 16, 0.98) 100%),
+    repeating-radial-gradient(circle at center, transparent 0%, transparent 8%, rgba(212, 175, 55, 0.02) 8%, rgba(212, 175, 55, 0.02) 16%);
+  border: 2px solid var(--border-dim);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.05);
+}
+
+.circle-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.center-icon {
+  font-size: 3rem;
+  display: block;
+}
+
+.center-text {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--accent-gold);
+  display: block;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+.center-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Player Tokens */
+.player-token {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: var(--transition-normal);
+  z-index: 1;
+}
+
+.player-token:hover {
+  z-index: 10;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.player-token.selected {
+  z-index: 20;
+}
+
+.player-token.selected .token-inner {
+  box-shadow: 0 0 0 2px var(--accent-gold), var(--shadow-gold);
+}
+
+.token-inner {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm);
+  min-width: 80px;
+  text-align: center;
+  border: 1px solid var(--border-dim);
+  transition: var(--transition-normal);
+  position: relative;
+  backdrop-filter: blur(8px);
+}
+
+.player-token.dead .token-inner {
+  opacity: 0.6;
+  border-color: var(--dead);
+}
+
+.token-character {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.token-character.team-townsfolk { background: rgba(74, 158, 255, 0.15); border: 1px solid rgba(74, 158, 255, 0.4); }
+.token-character.team-outsider { background: rgba(23, 165, 137, 0.15); border: 1px solid rgba(23, 165, 137, 0.4); }
+.token-character.team-minion { background: rgba(230, 126, 34, 0.15); border: 1px solid rgba(230, 126, 34, 0.4); }
+.token-character.team-demon { background: rgba(192, 57, 43, 0.15); border: 1px solid rgba(192, 57, 43, 0.4); }
+
+.token-char-name {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--text-primary);
+  display: block;
+}
+
+.token-empty {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-full);
+  background: rgba(12, 12, 26, 0.6);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  margin: 0 auto var(--spacing-xs);
+}
+
+.token-player-name {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: block;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.death-shroud {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 1.25rem;
+}
+
+.token-reminders {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-top: var(--spacing-xs);
+}
+
+.mini-reminder {
+  font-size: 0.75rem;
+  background: rgba(12, 12, 26, 0.6);
+  border-radius: var(--radius-sm);
+  padding: 1px 4px;
+  border: 1px solid var(--border-subtle);
+}
+
+.mini-reminder.more {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+/* Side Panel */
+.grimoire-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+}
+
+.panel-section {
+  padding: var(--spacing-md);
+}
+
+.panel-title {
+  font-size: 1rem;
+  color: var(--accent-gold);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--border-dim);
+  letter-spacing: 0.5px;
+}
+
+.add-player-form {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.add-player-form .form-input {
+  flex: 1;
+}
+
+/* Player Details */
+.player-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.selected-character {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.reminder-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.reminder-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: rgba(12, 12, 26, 0.5);
+  border: 1px solid var(--border-dim);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-normal);
+}
+
+.reminder-btn:hover {
+  border-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.06);
+}
+
+.custom-reminder-form {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.custom-reminder-form .form-input {
+  flex: 1;
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.active-reminders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.reminder-tag {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: rgba(12, 12, 26, 0.5);
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-normal);
+  border: 1px solid var(--border-subtle);
+}
+
+.reminder-tag:hover {
+  background: rgba(192, 57, 43, 0.15);
+  border-color: rgba(192, 57, 43, 0.3);
+  color: #e74c3c;
+}
+
+/* Character Select */
+.character-select {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.character-select-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.character-select-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: var(--spacing-xs);
+}
+
+@media (max-width: 1000px) {
+  .grimoire-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .grimoire-circle-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .grimoire-panel {
+    max-height: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .grimoire-circle-container {
+    min-height: 350px;
+  }
+
+  .token-inner {
+    min-width: 60px;
+    padding: var(--spacing-xs);
+  }
+
+  .token-char-name {
+    font-size: 0.6rem;
+  }
+
+  .token-player-name {
+    font-size: 0.65rem;
+    max-width: 60px;
+  }
+}
