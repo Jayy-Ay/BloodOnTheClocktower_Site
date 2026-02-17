@@ -1,0 +1,136 @@
+.home {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.home-hero {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  color: var(--accent-gold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.home-status {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.status-card {
+  background: var(--bg-card);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  text-align: center;
+  border: 1px solid var(--accent-gold-dim);
+}
+
+.status-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.status-value {
+  display: block;
+  font-size: 0.5rem;
+  color: var(--accent-gold);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.feature-card {
+  background: var(--bg-card);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.feature-card:hover:not(.disabled) {
+  border-color: var(--accent-gold);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.feature-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--spacing-md);
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  color: var(--accent-gold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.feature-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.feature-notice {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--team-demon);
+  font-style: italic;
+}
+
+.home-actions {
+  text-align: center;
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--accent-gold-dim);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .home-features {
+    grid-template-columns: 1fr;
+  }
+}

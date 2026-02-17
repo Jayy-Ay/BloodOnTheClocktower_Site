@@ -1,0 +1,217 @@
+.setup-calculator {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.calculator-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.player-count-card {
+  text-align: center;
+}
+
+.player-count-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.count-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  color: var(--accent-gold);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 2px solid var(--accent-gold-dim);
+}
+
+.count-btn:hover:not(:disabled) {
+  border-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.count-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.player-count {
+  font-size: 3rem;
+  font-family: var(--font-display);
+  color: var(--accent-gold);
+  min-width: 80px;
+}
+
+.player-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--bg-secondary);
+  appearance: none;
+  cursor: pointer;
+}
+
+.player-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--accent-gold);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.player-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.distribution-card {
+  text-align: center;
+}
+
+.distribution-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.dist-item {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+}
+
+.dist-item.townsfolk { border-left: 4px solid var(--team-townsfolk); }
+.dist-item.outsider { border-left: 4px solid var(--team-outsider); }
+.dist-item.minion { border-left: 4px solid var(--team-minion); }
+.dist-item.demon { border-left: 4px solid var(--team-demon); }
+
+.dist-count {
+  display: block;
+  font-size: 2rem;
+  font-family: var(--font-display);
+  color: var(--text-primary);
+}
+
+.dist-count s {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+
+.dist-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modifier-notice {
+  color: var(--accent-gold);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm);
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: var(--radius-md);
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--accent-gold-dim);
+  font-size: 1.1rem;
+}
+
+.total-count {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--accent-gold);
+}
+
+.actions-card {
+  text-align: center;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.action-notice {
+  margin-top: var(--spacing-md);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.setup-reference {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.setup-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--spacing-md);
+}
+
+.setup-table th,
+.setup-table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: center;
+  border-bottom: 1px solid var(--bg-secondary);
+}
+
+.setup-table th {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+.setup-table th.townsfolk { color: var(--team-townsfolk); }
+.setup-table th.outsider { color: var(--team-outsider); }
+.setup-table th.minion { color: var(--team-minion); }
+.setup-table th.demon { color: var(--team-demon); }
+
+.setup-table td.townsfolk { color: var(--team-townsfolk); }
+.setup-table td.outsider { color: var(--team-outsider); }
+.setup-table td.minion { color: var(--team-minion); }
+.setup-table td.demon { color: var(--team-demon); }
+
+.setup-table tr.active {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.setup-table tr.active td:first-child {
+  font-weight: bold;
+  color: var(--accent-gold);
+}
+
+@media (max-width: 768px) {
+  .calculator-content {
+    grid-template-columns: 1fr;
+  }
+
+  .setup-table {
+    font-size: 0.85rem;
+  }
+
+  .setup-table th,
+  .setup-table td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}

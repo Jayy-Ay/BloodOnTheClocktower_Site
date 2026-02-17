@@ -1,0 +1,105 @@
+.script-loader {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.script-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: var(--accent-gold);
+  margin-bottom: var(--spacing-md);
+}
+
+.card-description {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.official-scripts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.script-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  text-align: left;
+  border: 2px solid transparent;
+  transition: var(--transition-fast);
+}
+
+.script-btn:hover {
+  border-color: var(--accent-gold-dim);
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.script-btn.active {
+  border-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.script-btn-icon {
+  font-size: 2rem;
+}
+
+.script-btn-name {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.script-btn-count {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.error-message {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(192, 57, 43, 0.2);
+  border: 1px solid var(--team-demon);
+  border-radius: var(--radius-md);
+  color: #e74c3c;
+  font-size: 0.9rem;
+}
+
+.loaded-script {
+  margin-top: var(--spacing-xl);
+}
+
+.team-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.team-header {
+  font-size: 1.1rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  display: inline-block;
+}
+
+.team-header.team-townsfolk { background: var(--team-townsfolk); color: white; }
+.team-header.team-outsider { background: var(--team-outsider); color: white; }
+.team-header.team-minion { background: var(--team-minion); color: white; }
+.team-header.team-demon { background: var(--team-demon); color: white; }
+.team-header.team-traveler { background: var(--team-traveler); color: white; }
+
+@media (max-width: 768px) {
+  .script-options {
+    grid-template-columns: 1fr;
+  }
+}
