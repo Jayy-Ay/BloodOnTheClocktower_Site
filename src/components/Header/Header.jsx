@@ -1,6 +1,7 @@
 import { useGame } from '../../context/GameContext'
 import { NavLink, Link } from 'react-router-dom'
 import { GiDrop, GiCastle, GiScrollUnfurled, GiAbacus, GiDramaMasks, GiSpellBook } from 'react-icons/gi'
+import getIconComponent from '../../utils/getIconComponent'
 import './Header.css'
 
 function Header() {
@@ -27,7 +28,7 @@ function Header() {
         
         {scriptName && (
           <div className="header-script">
-            {scriptIcon && <span className="script-icon">{scriptIcon}</span>}
+            {scriptIcon && <span className="script-icon">{getIconComponent(scriptIcon)}</span>}
             <span className="script-label">Script:</span>
             <span className="script-name">{scriptName}</span>
           </div>

@@ -2,23 +2,14 @@ import { useState, useRef } from 'react'
 import { useGame, useGameDispatch } from '../../context/GameContext'
 import rolesData from '../../data/roles.json'
 import CharacterCard from '../CharacterCard/CharacterCard'
-import { GiSunrise, GiCrescentBlade, GiBleedingHeart, GiScrollUnfurled } from 'react-icons/gi'
 import { FaEdit, FaTrash } from 'react-icons/fa'
+import getIconComponent from '../../utils/getIconComponent'
 import './ScriptLoader.css'
 
-// Icon mapping function
-const getIconComponent = (iconKey) => {
-  const iconMap = {
-    'sunrise': <GiSunrise />,
-    'crescent': <GiCrescentBlade />,
-    'purple': <GiBleedingHeart />,
-    'scroll': <GiScrollUnfurled />,
-  }
-  return iconMap[iconKey] || iconKey || <GiScrollUnfurled />
-}
+
 
 function ScriptLoader() {
-  const { script, scriptName, scriptIcon, savedScripts } = useGame()
+  const { script, scriptName, scriptIcon, savedScripts, players, characterBag } = useGame()
   const dispatch = useGameDispatch()
   const fileInputRef = useRef(null)
   const [error, setError] = useState('')
@@ -197,6 +188,28 @@ function ScriptLoader() {
   return (
     <div className="script-loader">
       <h2 className="section-title">Load Script</h2>
+
+      {script && (
+        <div className="current-script-status">
+          <div className="status-card highlight">
+            <span className="status-icon">{getIconComponent(scriptIcon)}</span>
+            <span className="status-label">Current Script</span>
+            <span className="status-value">{scriptName}</span>
+          </div>
+          <div className="status-card">
+            <span className="status-label">Characters Loaded</span>
+            <span className="status-value">{script.length}</span>
+          </div>
+          <div className="status-card">
+            <span className="status-label">Players</span>
+            <span className="status-value">{players.length}</span>
+          </div>
+          <div className="status-card">
+            <span className="status-label">In Bag</span>
+            <span className="status-value">{characterBag.length}</span>
+          </div>
+        </div>
+      )}
 
       <div className="script-options">
         <div className="card">

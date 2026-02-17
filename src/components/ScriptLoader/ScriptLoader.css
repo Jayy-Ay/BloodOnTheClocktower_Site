@@ -3,6 +3,58 @@
   margin: 0 auto;
 }
 
+/* Current Script Status Cards */
+.current-script-status {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.current-script-status .status-card {
+  background: rgba(12, 12, 26, 0.7);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-xs);
+  transition: var(--transition-normal);
+}
+
+.current-script-status .status-card:hover {
+  border-color: var(--border-subtle);
+  background: rgba(12, 12, 26, 0.85);
+}
+
+.current-script-status .status-card.highlight {
+  border-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.current-script-status .status-icon {
+  font-size: 1.5rem;
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-script-status .status-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.current-script-status .status-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
 .script-options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
